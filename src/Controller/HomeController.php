@@ -54,7 +54,7 @@ class HomeController extends AbstractController
         $flashbackMessage="";
         // récupèrer les données d'un flux RSS et ajoute les URLs d'images (si elles existent) au tableau
         try {
-            $res = $this->apiCall('GET','aa');
+            $res = $this->apiCall('GET','http://www.commitstrip.com/en/feed/');
             
             foreach($res->channel as $data){
                 foreach($data->item as $item){
@@ -83,7 +83,7 @@ class HomeController extends AbstractController
 
        //Effectue une requête GET vers l'API "newsapi.org" pour récupérer les donnes. 
        try {
-            $res = $this->client->request('GET', 'aa');
+            $res = $this->client->request('GET', 'https://newsapi.org/v2/top-headlines?country=us&apiKey=c782db1cd730403f88a544b75dc2d7a0');
             foreach($res->toArray()['articles'] as $item){
                 if(!empty($item['urlToImage']) && $this->isImageUrl($item['urlToImage'])){
                     $tab[] = $item['urlToImage'];
