@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Fioulmarket - Test</h1>
+
+    {% if flashbackMessage is defined and flashbackMessage is not empty %}
+    <div class="flashback-message">
+        {{ flashbackMessage }}
+    </div>
+    {% endif %}
+
+    {% if images is defined and images|length > 0 %}
+        <div class="gallery cf">
+            {% for image in images %}
+                <div>
+                    <img src="{{ image }}" title="{{ image }}"/>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+    <p>Aucune image trouvée.</p>
+    {% endif %}
+   
+{% endblock %}
